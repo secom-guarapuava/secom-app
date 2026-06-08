@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html, body {
+  background: #0A2138; /* moldura escura atrás do app */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Container central tipo "app" em telas largas */
+.app-shell {
+  max-width: 28rem; /* 448px */
+  margin: 0 auto;
+  background: linear-gradient(180deg, #F6F8FB 0%, #EEF2F7 100%);
+  min-height: 100dvh;
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* esconde scrollbar mantendo rolagem */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* respeita área segura (notch) em iOS quando instalado */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Campo de formulário padrão (usado no AgendaForm) */
+.inp {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  font-size: 0.875rem;
+  background: #fff;
+  outline: none;
+  color: #1B2733;
+  transition: border-color .15s, box-shadow .15s;
+}
+.inp:focus {
+  border-color: #E2622F;
+  box-shadow: 0 0 0 3px rgba(226, 98, 47, 0.12);
+}
+
+/* Botão primário com gradiente da marca */
+.btn-brand {
+  background-image: linear-gradient(135deg, #F0743C 0%, #E2622F 55%, #C9521F 100%);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(226, 98, 47, 0.28);
+}
+.btn-brand:active { transform: scale(0.98); }
+
+/* Faixa luminosa sutil para destaque (cards navy) */
+.glow-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(120% 80% at 85% -10%, rgba(226, 98, 47, 0.28), transparent 60%);
+  pointer-events: none;
+}

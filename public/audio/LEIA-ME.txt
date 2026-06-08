@@ -1,0 +1,10 @@
+Coloque aqui os audios institucionais em formato MP3.
+
+Arquivos esperados (nomes configuraveis no Painel Administrativo):
+  abertura.mp3              -> "Bom dia. Qual agenda deseja consultar hoje?"
+  nova-agenda.mp3          -> "Nova agenda cadastrada."
+  agenda-15min.mp3         -> "Agenda iniciando em 15 minutos."
+  prefeito-no-local.mp3    -> "Prefeito ja esta no local do evento."
+
+Dica: grave com a locucao oficial da Secretaria ou use um gerador de voz
+(ex.: ElevenLabs, Google Cloud Text-to-Speech) e exporte como MP3.

@@ -1,0 +1,34 @@
+==========================================================
+ REGRAS DO FIRESTORE — Central SECOM (sincronização)
+==========================================================
+
+Cole isto em: Firebase Console > Firestore Database > aba "Regras"
+(Rules) > e clique em "Publicar".
+
+Sem isto, o Firestore bloqueia leitura/gravação e os dados NÃO sincronizam.
+
+----------------------------------------------------------
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Estado compartilhado do app (agendas, equipe, plantão).
+    // Qualquer pessoa autenticada (login anônimo do app) pode ler e escrever.
+    match /secom/{doc} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Reservado para as notificações push (etapa futura).
+    match /notificationTokens/{token} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+----------------------------------------------------------
+
+OBSERVAÇÃO DE SEGURANÇA
+- "if request.auth != null" libera para quem está logado. Como o app faz
+  login ANÔNIMO automático, todos da equipe conseguem usar sem senha.
+- É adequado para uso interno e dados não sensíveis (agendas/escala).
+- NÃO use "allow read, write: if true" (isso deixaria aberto para qualquer
+  um na internet, sem login).
