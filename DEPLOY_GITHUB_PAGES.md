@@ -21,3 +21,8 @@ Este projeto é Next.js, então ele não tem um `index.html` pronto na raiz. O `
 ## Firebase depois
 
 O projeto já tem Firebase preparado em `src/lib/firebaseConfig.ts`. Depois que o GitHub Pages estiver funcionando, basta preencher esse arquivo com as chaves do Firebase e fazer novo commit/push. O GitHub Actions vai publicar novamente.
+
+
+## OBSERVAÇÃO FIREBASE
+
+Esta versão também pode ser publicada pelo Firebase Hosting. Para isso, use as instruções do arquivo `FIREBASE.md`. O GitHub Pages continua funcionando como hospedagem estática, mas o Firebase Hosting é o caminho mais direto para usar o projeto `secom-app`.

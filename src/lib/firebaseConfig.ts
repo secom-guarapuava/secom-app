@@ -2,17 +2,18 @@
 //  CONFIGURAÇÃO DO FIREBASE — Central SECOM
 // ============================================================
 //
-// Este app usa Firebase para sincronizar os dados em tempo real entre todos
-// os aparelhos da equipe. A chave "Web" do Firebase NÃO é uma senha secreta:
-// ela é pública por natureza e pode ficar no front-end. A segurança real fica
-// nas Regras do Firestore + autenticação anônima habilitada no Console.
+// Projeto Firebase conectado: secom-app
+//
+// Esta configuração web do Firebase NÃO é uma senha secreta. Ela é pública
+// por natureza no front-end. A segurança real deve ficar nas Regras do
+// Firestore + autenticação anônima habilitada no Console do Firebase.
 
 export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBmtzuHVjXErXTyMkUeVCM01oJYNe-uSOA",
-  authDomain: "secom-novo.firebaseapp.com",
-  projectId: "secom-novo",
-  storageBucket: "secom-novo.firebasestorage.app",
-  messagingSenderId: "615721478085",
-  appId: "1:615721478085:web:a522fd57eac0cac9190dac",
-  measurementId: "G-3FY75N7D72",
+  apiKey: "AIzaSyCvcIdUo3fsZCLryfWjAeSfyBoWBFoCgk0",
+  authDomain: "secom-app.firebaseapp.com",
+  projectId: "secom-app",
+  storageBucket: "secom-app.firebasestorage.app",
+  messagingSenderId: "1028142006406",
+  appId: "1:1028142006406:web:66d1a850a6bfe40230d107",
+  measurementId: "G-KL34RKKQPQ",
 };

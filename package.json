@@ -2,12 +2,14 @@
   "name": "central-comunicacao",
   "version": "2.0.0",
   "private": true,
-  "description": "Central de Operacoes da SECOM — PWA mobile-first (GitHub Pages)",
+  "description": "Central de Operações da SECOM — PWA mobile-first com Firebase",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:firebase": "npm run build && npx firebase-tools deploy --only hosting",
+    "firebase:login": "npx firebase-tools login"
   },
   "dependencies": {
     "firebase": "^11.0.0",

@@ -1,5 +1,5 @@
 ==========================================================
- REGRAS DO FIRESTORE — Central SECOM (sincronização)
+ REGRAS DO FIRESTORE — Central SECOM / projeto secom-app
 ==========================================================
 
 Cole isto em: Firebase Console > Firestore Database > aba "Regras"
@@ -30,5 +30,5 @@ OBSERVAÇÃO DE SEGURANÇA
 - "if request.auth != null" libera para quem está logado. Como o app faz
   login ANÔNIMO automático, todos da equipe conseguem usar sem senha.
 - É adequado para uso interno e dados não sensíveis (agendas/escala).
-- NÃO use "allow read, write: if true" (isso deixaria aberto para qualquer
-  um na internet, sem login).
+- NÃO use "allow read, write: if true". Isso deixaria aberto para qualquer
+  um na internet, sem login.

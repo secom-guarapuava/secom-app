@@ -1,17 +1,29 @@
-# Firebase configurado — próximos passos
+# Firebase configurado — projeto `secom-app`
 
-O arquivo `src/lib/firebaseConfig.ts` já está preenchido com o projeto `central-secom`.
+O app já está conectado ao Firebase pelo arquivo `src/lib/firebaseConfig.ts`.
+A configuração usada é a do projeto `secom-app`, com Firestore para sincronizar os dados entre todos os celulares/computadores que abrirem o mesmo link.
 
-Agora falta apenas configurar o Console do Firebase para permitir que o app leia e grave os dados.
+Importante: o código de configuração web do Firebase não publica o app sozinho. Ele apenas conecta o app ao projeto Firebase. Para o app ficar online em uma “nuvem”, você ainda precisa publicar pelo Firebase Hosting ou pelo GitHub Pages.
+
+## O que já foi feito neste projeto
+
+- Firebase App inicializado.
+- Firestore conectado.
+- Login anônimo preparado.
+- Analytics iniciado de forma segura no navegador.
+- Configuração de Firebase Hosting adicionada:
+  - `firebase.json`
+  - `.firebaserc`
+  - script `npm run deploy:firebase`
 
 ## 1. Ativar login anônimo
 
 No Firebase Console:
 
-1. Entre no projeto `central-secom`.
+1. Entre no projeto `secom-app`.
 2. Vá em **Authentication**.
-3. Clique em **Get started** / **Vamos começar**, se ainda não estiver ativo.
-4. Vá em **Sign-in method**.
+3. Clique em **Get started / Vamos começar**, se ainda não estiver ativo.
+4. Vá em **Sign-in method / Método de login**.
 5. Ative o provedor **Anonymous / Anônimo**.
 6. Salve.
 
@@ -39,6 +51,10 @@ service cloud.firestore {
     match /secom/{documento} {
       allow read, write: if request.auth != null;
     }
+
+    match /notificationTokens/{token} {
+      allow read, write: if request.auth != null;
+    }
   }
 }
 ```
@@ -47,16 +63,28 @@ Depois clique em **Publish / Publicar**.
 
 Essas regras permitem leitura e gravação apenas para sessões autenticadas. Como o app faz autenticação anônima automática, os usuários conseguem usar sem senha, mas acessos totalmente não autenticados são bloqueados.
 
-## 4. Subir no GitHub
+## 4. Publicar pelo Firebase Hosting
 
-Depois de configurar Authentication e Firestore, suba este projeto atualizado no GitHub, substituindo os arquivos atuais.
+No terminal, dentro da pasta do projeto:
 
-A Action vai rodar de novo. Quando ficar verde, abra o link do GitHub Pages e teste em duas abas ou dois aparelhos.
+```bash
+npm install
+npm run firebase:login
+npm run deploy:firebase
+```
 
-## 5. Como testar
+No final, o Firebase vai mostrar o link público do app. Normalmente será algo parecido com:
 
-Abra o app em dois lugares ao mesmo tempo. Crie ou altere uma agenda em um deles. Em alguns segundos, a mudança deve aparecer no outro.
+```txt
+https://secom-app.web.app
+```
+
+Esse é o link que você compartilha com a equipe.
+
+## 5. Como testar a sincronização
+
+Abra o app em dois lugares ao mesmo tempo: por exemplo, uma aba no computador e outra no celular. Crie ou altere uma agenda em um deles. Em alguns segundos, a mudança deve aparecer no outro.
 
 ## Observação importante
 
-Com login anônimo, qualquer pessoa que tiver o link do app pode acessar e editar. Para teste e uso interno simples funciona. Para uma versão mais controlada, o próximo passo é criar login por e-mail/senha ou restringir o acesso por usuários autorizados.
+Com login anônimo, qualquer pessoa que tiver o link do app pode acessar e editar. Para teste e uso interno simples, funciona. Para uma versão mais controlada, o próximo passo é criar login por e-mail/senha ou restringir o acesso por usuários autorizados.
